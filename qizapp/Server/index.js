@@ -42,6 +42,18 @@ app.get("/quiz_coures",(req,res) => {
           res.json(result);
         });
       });
+      app.get("/quiz_Subjects/:exam_id",(req,res)=>{
+        const sql="SELECT s.subi_id,s.subject_name FROM egquiz_subindex s,3egquiz_subject t WHERE t.subi_id=s.subi_id and exam_id=?";
+        const exam_id=req.params.exam_id;
+        db.query(sql, [exam_id] ,(err,result)=>{
+          if(err){
+            console.error('Error querying the database: ' + err.message);
+           res.status(500).json({ error: 'Error fetching subjects' });
+          return;
+        }
+        res.json(result);
+        })
+        });
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
