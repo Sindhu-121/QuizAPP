@@ -9,6 +9,7 @@ const db = mysql.createConnection({
     password:'',
     database: 'egquizdatabase',
   });
+
   db.connect((err) => {
     if (err) {
       console.error('Error connecting to MySQL: ' + err.message);
@@ -17,6 +18,7 @@ const db = mysql.createConnection({
     console.log('Connected to the MySQL database');
   });
   app.use(cors());
+
 //   geting coureses
 app.get("/quiz_coures",(req,res) => {
     const sql="SELECT * FROM 1egquiz_courses";
@@ -55,6 +57,7 @@ app.get("/quiz_coures",(req,res) => {
         })
         });
 
+        
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
     });
