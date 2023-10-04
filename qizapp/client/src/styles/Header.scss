@@ -1,0 +1,35 @@
+.navbar-div1 {
+    padding: 0 1rem;
+//    padding: 10px;
+     background: url(../Images/background.jpeg);
+    height: 1510px;
+    background-repeat: no-repeat;
+    width: 931px;
+     
+    .navbar-div2 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        // padding: 10px 0;
+    }
+
+    .navbar-links {
+        padding-right: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: center;
+        // text-align: center;
+        gap: 40px;
+       
+    }
+    .nav-coures-btn{
+        padding: 5px;
+    }
+    .nav-links{
+        text-decoration: none;
+    }
+    .nav-courses-li{
+        list-style: none;
+    }
+}

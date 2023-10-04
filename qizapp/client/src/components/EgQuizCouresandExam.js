@@ -33,13 +33,14 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/EgQuizLandingPage.scss'
 
 export const EgQuizCouresandExam = ({ course_id }) => {
     const [exams, setExams] = useState([]);
 
     useEffect(() => {
         if (course_id) {
-            axios.get(`http://localhost:3008/quiz_exams/${course_id}`)
+            axios.get(`http://localhost:3308/quiz_exams/${course_id}`)
                 .then((res) => {
                     setExams(res.data);
                 })
@@ -52,7 +53,7 @@ export const EgQuizCouresandExam = ({ course_id }) => {
     return (
         <ul>
             {exams.map((exam) => (
-                <li key={exam.exam_id}>{exam.exam_name}</li>
+                <p className='exams' key={exam.exam_id}>{exam.exam_name}</p>
             ))}
         </ul>
     );
