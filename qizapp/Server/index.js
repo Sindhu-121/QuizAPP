@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const app = express();
-const port = 3008;
+const port = 3308;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -44,8 +44,13 @@ app.get("/quiz_exams/:course_id", (req, res) => {
           res.json(result);
         });
       });
+
       // getting subject
 app.get("/quiz_Subjects/:exam_id",(req,res)=>{
+
+      
+      app.get("/quiz_Subjects/:exam_id",(req,res)=>{
+
         const sql="SELECT s.subi_id,s.subject_name FROM egquiz_subindex s,3egquiz_subject t WHERE t.subi_id=s.subi_id and exam_id=?";
         const exam_id=req.params.exam_id;
         db.query(sql, [exam_id] ,(err,result)=>{

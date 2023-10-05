@@ -37,16 +37,23 @@
     
 //   )
 // }
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { EgQuizCouresandExam } from './EgQuizCouresandExam';
+import '../styles/EgQuizLandingPage.scss' 
+
 
 export const EgQuizLandingPage = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3008/quiz_coures/')
+    axios.get('http://localhost:3308/quiz_coures/')
       .then((res) => {
         setCourses(res.data);
       })
@@ -65,23 +72,34 @@ export const EgQuizLandingPage = () => {
   };
 
   return (
-    <div>
+    <div className='LandingPage' id='egQuizLandingPage'>
+      <div>
+        <h2 className='coures-heading'>Courses</h2>
+      </div>
       <div className='courses'>
-        <ul>
+        <p className='course-exams'>
           {courses.map((course) => (
-            <li key={course.course_id}>
-              <button
-                onClick={() => handleCourseClick(course.course_id)}
-                className={selectedCourse === course.course_id ? 'active' : ''}
-              >
-                {course.course_name}
-              </button>
-              {selectedCourse === course.course_id && (
-                <EgQuizCouresandExam course_id={course.course_id} />
-              )}
-            </li>
+            <p  key={course.course_id}>
+              <div className='course-exam-btn-div'>
+                <button id='coures-exams-btn'
+                  onClick={() => handleCourseClick(course.course_id)}
+                  className={selectedCourse === course.course_id ? 'active' : ''}
+                >
+                  {course.course_name}<i class="fa-solid fa-caret-down"></i>
+                </button>
+              </div>
+              <div className='Course-Exam-sub-menu'>
+                <ul>
+                  {selectedCourse === course.course_id && (
+                    <EgQuizCouresandExam course_id={course.course_id} />
+                    // <EgQuizCouresandExam course_id={course.course_id} />
+                  )}
+                </ul>
+              </div>
+             
+            </p>
           ))}
-        </ul>
+        </p>
       </div>
     </div>
   );
