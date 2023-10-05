@@ -34,6 +34,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/EgQuizLandingPage.scss'
+import {Link} from 'react-router-dom'
 
 export const EgQuizCouresandExam = ({ course_id }) => {
     const [exams, setExams] = useState([]);
@@ -52,9 +53,10 @@ export const EgQuizCouresandExam = ({ course_id }) => {
 
     return (
         <ul>
-            {exams.map((exam) => (
-                <p className='exams' key={exam.exam_id}>{exam.exam_name}</p>
+           {exams.map((exam) => (
+                 <Link><p className='exams' key={exam.exam_id}>{exam.exam_name}</p></Link>
             ))}
+            
         </ul>
     );
 };
